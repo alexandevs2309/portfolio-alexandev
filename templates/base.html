@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alexander (alexandev) - Desarrollador especializado en Angular y Python. Creando soluciones web innovadoras y eficientes para impulsar el éxito de tu proyecto.">
+
+    
+    <title> Portfolio |    {% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .neon-text {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.8);
+        }
+    </style>
+    
+</head>
+<body class="bg-gray-900">
+    
+{% block content %}
+   
+{% endblock content %}
+ <!-- AOS (Animate on Scroll) Init -->
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+ <script src="{{url_for('static',  filename='js/app.js') }}"></script>
+ 
+    <script>
+        AOS.init();  
+    </script>
+       
+
+<script>
+
+
+
+    // Nombre que se mostrará en la barra de navegación
+    const navName = document.getElementById('nav-name');
+    const dynamicTitle = document.getElementById('dynamic-title');
+    const dynamicDescription = document.getElementById('dynamic-description');
+
+    const descriptions = [
+        "Apasionado por crear soluciones backend robustas con Python.",
+        "Amante de la eficiencia y la funcionalidad en la programación.",
+        "Explorando las últimas tecnologías en backend y desarrollo con Python.",
+    ];
+
+    let descriptionIndex = 0; // Índice para la descripción
+
+    // Función para simular el efecto de máquina de escribir
+    function typeWriter(element, text, i, fnCallback) {
+        if (i < text.length) {
+            element.innerHTML = text.substring(0, i + 1); // Mostrar letra por letra
+            setTimeout(() => {
+                typeWriter(element, text, i + 1, fnCallback); // Llamar de nuevo a la función
+            }, 100); // Tiempo entre letras
+        } else if (fnCallback) {
+            setTimeout(fnCallback, 700); // Esperar un poco al final
+        }
+    }
+
+    // Función para iniciar la escritura de la descripción
+    function startTyping() {
+        // Escribir la descripción
+        typeWriter(dynamicDescription, descriptions[descriptionIndex], 0, () => {
+            descriptionIndex = (descriptionIndex + 1) % descriptions.length; // Cambiar a la siguiente descripción
+            setTimeout(startTyping, 1000); // Esperar antes de volver a empezar
+        });
+    }
+
+    // Mostrar el nombre en la barra de navegación una sola vez
+    typeWriter(navName, "Alexan'", 0, () => {
+        // Iniciar la escritura de la descripción después del nombre
+        setTimeout(startTyping, 1000);
+    });
+
+    // Mostrar el nombre en la sección principal
+    dynamicTitle.innerHTML = "Hi, I'm Alexander"; // Cambia "Your Name" por tu nombre real
+
+    // Variables para los elementos
+    const navbar = document.getElementById('navbar');
+    const textContainer = document.getElementById('dynamic-title');
+
+    // Función para ocultar la navegación al hacer scroll
+    let lastScrollTop = 0; // Última posición de scroll
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const textContainerPosition = textContainer.getBoundingClientRect().top;
+
+        if (textContainerPosition < 0) {
+            // Si el contenedor de texto ya está fuera de la vista, oculta la barra de navegación
+            navbar.classList.add('hidden');
+        } else {
+            // Si se desplaza hacia arriba y el contenedor aún está visible, muestra la barra de navegación
+            if (currentScroll < lastScrollTop) {
+                navbar.classList.remove('hidden');
+            }
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para evitar que sea negativo
+    });
+</script>
+
+
+</body>
+</html>

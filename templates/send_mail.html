@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Mensaje Enviado{% endblock title %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen  bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 overflow-hidden relative pt-16">
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+        <div class="text-center mb-8">
+            <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h2 class="mt-4 text-3xl font-extrabold text-gray-900">¡Mensaje Enviado!</h2>
+        </div>
+
+        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6 rounded-r-lg">
+            <p class="text-green-700 font-medium">Tu correo ha sido enviado exitosamente.</p>
+        </div>
+
+        <p class="text-gray-600 mb-8 text-center">
+            Tu correo y mensaje se han enviado correctamente a Alexander. Tan pronto sea recibido, obtendrás una respuesta.
+        </p>
+
+        <div class="text-center">
+            <button onclick="window.location.href='/'" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out">
+                <svg class="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+                Regresar a Home
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock content %}

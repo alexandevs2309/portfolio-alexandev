@@ -1,0 +1,84 @@
+
+{% block content %}
+<section id="about" class="py-24 bg-gradient-to-b from-gray-900 to-gray-800 text-white overflow-hidden relative">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,...')] bg-repeat"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-5xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+            Sobre mí
+        </h2>
+        
+        <div class="flex flex-wrap justify-between items-start">
+            <div class="w-full lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 shadow-2xl">
+                    <p class="text-xl leading-relaxed text-gray-300 mb-6">
+                        Soy un desarrollador apasionado por crear soluciones innovadoras y atractivas, siempre buscando aprender nuevas tecnologías y superar desafíos creativos.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <button onclick="showLanguageInfo('python')" class="px-4 py-2 bg-blue-600 rounded-full text-sm font-semibold hover:bg-blue-700 transition duration-300">Python</button>
+                        <button onclick="showLanguageInfo('js')" class="px-4 py-2 bg-yellow-500 rounded-full text-sm font-semibold hover:bg-yellow-600 transition duration-300">JavaScript</button>
+                        <button onclick="showLanguageInfo('angular')" class="px-4 py-2 bg-red-600 rounded-full text-sm font-semibold hover:bg-blue-500 transition duration-300">Angular</button>
+                        <button onclick="showLanguageInfo('node')" class="px-4 py-2 bg-green-500 rounded-full text-sm font-semibold hover:bg-green-600 transition duration-300">Node.js</button>
+                        <button onclick="showLanguageInfo('PostgresSQL')" class="px-4 py-2 bg-green-500 rounded-full text-sm font-semibold hover:bg-green-600 transition duration-300">PostgresSQL</button>
+
+                    </div>
+                    <div id="languageInfo" class="hidden mt-6 p-4 bg-gray-800 rounded-lg">
+                        <img id="languageImage" src="" alt="Language Logo" class="w-16 h-16 mx-auto mb-4">
+                        <p id="languageDescription" class="text-gray-300 text-center"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-2/5" data-aos="fade-left">
+                <div class="relative group">
+                    <img src="{{url_for('static' , filename='img/perfil.png')}}" alt="Mi foto" class="rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-300">
+                    <!-- Div para el fondo de gradiente y la imagen -->
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl blur opacity-50 group-hover:opacity-0 transition duration-300"></div>
+                    <!-- Imagen que se mostrará al hacer hover -->
+                    <div class="absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300">
+                        <img src="{{url_for('static' , filename='img/desarrollador_web_.jpg')}}" alt="Hover Background" class="rounded-2xl w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<script>
+const languageInfo = {
+    python: {
+        image: "static/img/python-logo.png",
+        description: "HTML5 es el lenguaje estándar para crear páginas web. Proporciona la estructura básica y el contenido de una página web."
+    },
+    js: {
+        image: "static/img/javascript-.png",
+        description: "JavaScript es un lenguaje de programación versátil que permite crear interactividad dinámica en sitios web."
+    },
+    angular: {
+        image: "static/img/logo-angularl.png",
+        description: "React es una biblioteca de JavaScript para construir interfaces de usuario. Permite crear aplicaciones web de una sola página y móviles."
+    },
+    node: {
+        image: "static/img/nodejs.png",
+        description: "Node.js es un entorno de ejecución de JavaScript del lado del servidor. Permite construir aplicaciones de red escalables."
+    },
+    PostgresSQL: {
+        image: "static/img/posgres.png",
+        description: "Node.js es un entorno de ejecución de JavaScript del lado del servidor. Permite construir aplicaciones de red escalables."
+    }
+};
+
+function showLanguageInfo(language) {
+    const infoDiv = document.getElementById('languageInfo');
+    const imgElement = document.getElementById('languageImage');
+    const descElement = document.getElementById('languageDescription');
+
+    imgElement.src = languageInfo[language].image;
+    descElement.textContent = languageInfo[language].description;
+    infoDiv.classList.remove('hidden');
+}
+</script>
